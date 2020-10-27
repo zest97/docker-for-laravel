@@ -64,6 +64,10 @@ RUN chmod +x /usr/local/bin/initiate
 # RUN PHP FPM Service
 RUN service php7.4-fpm restart
 
+# Add Cron for scheduling
+RUN apt-get update \
+    && apt-get install -y cron
+
 # Expose to port 80
 EXPOSE 80
 
