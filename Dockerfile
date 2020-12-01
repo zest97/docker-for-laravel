@@ -33,6 +33,12 @@ RUN apt-get update \
     php7.4-dev php7.4-fpm php7.4-sqlite \
     php7.4-zip php7.4-gd
 
+# install postgres modules which support for pdo
+RUN apt-get update \
+    && apt-get install php7.4-pgsql
+
+RUN phpenmod -v 7.4 -s fpm pgsql
+
 # install composer by running sh
 COPY scripts/composer.sh ./
 
