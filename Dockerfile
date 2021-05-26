@@ -35,7 +35,7 @@ RUN apt-get update \
 
 # install postgres modules which support for pdo
 RUN apt-get update \
-    && apt-get install php7.4-pgsql
+    && apt-get install -y php7.4-pgsql
 
 RUN phpenmod -v 7.4 -s fpm pgsql
 
