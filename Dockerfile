@@ -36,9 +36,15 @@ RUN apt-get update \
 # install composer by running sh
 COPY scripts/composer.sh ./
 
-RUN chmod +x composer.sh
+COPY scripts/npm_installation.sh ./
+
+RUN chmod +x composer.sh && chmod +x npm_installation.sh
+
 RUN ./composer.sh
-RUN rm composer.sh \
+
+RUN ./npm_installation.sh
+
+RUN rm composer.sh npm_installation.sh \
     && mv composer.phar /usr/local/bin/composer
 
 # clean packages and set nginx daemon off
